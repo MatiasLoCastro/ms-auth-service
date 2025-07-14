@@ -1,0 +1,37 @@
+server:
+  port: 8080
+
+application:
+  environment: ${APP_ENVIRONMENT}
+  version: 1.0.0
+
+service:
+  connection:
+    timeout: 5000
+
+
+
+spring:
+  application:
+    name: ms-auth-service
+  webflux:
+    enabled: true
+    base-path: /auth
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}S
+      password: ${REDIS_PASS}
+      user: ${REDIS_USER}
+      ssl:
+        enabled: true
+  r2dbc:
+    url: r2dbc:postgresql://localhost:5432/authdb
+    username: youruser
+    password: yourpassword
+  sql:
+    init:
+      platform: postgres
+      mode: always
+
+
